@@ -39,4 +39,16 @@ public class PriceCalculatorTest {
     //then
     assertEquals(25147.5,result,0.01);
   }
+  @Test
+  public void should_get_1010_when_given_quantity_is_100_AND_itemPrice_is_10(){
+    //given
+    int itemPrice = 10;
+    int quantity = 100;
+    PriceCalculator priceCalculator = new PriceCalculator();
+    //when
+    double result = priceCalculator.getPrice(quantity,itemPrice);
+    //then
+    assertEquals(1010.0,result,0.01);
+  }
+
 }
