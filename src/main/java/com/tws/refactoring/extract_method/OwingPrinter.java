@@ -24,7 +24,6 @@ public class OwingPrinter {
   }
 
   private void printNameAndAmount(String name, double amount) {
-    // print details
     System.out.println("name: " + name);
     System.out.println("amount: " + amount);
   }
