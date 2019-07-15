@@ -1,5 +1,7 @@
 package com.tws.refactoring.extract_method;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +27,12 @@ public class OwingPrinterTest {
 
     @Test
     public void printOwing() {
-//        System.out.print("hello");
-//        assertEquals("hello", outContent.toString());
+       String name = "gio";
+       double amount = 888.0;
+       OwingPrinter owingPrinter = new OwingPrinter();
+       Order order = new Order(amount);
+       List<Order> orderList = new ArrayList<>();
+       orderList.add(order);
+       owingPrinter.printOwing(name,orderList);
     }
 }

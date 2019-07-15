@@ -6,35 +6,42 @@ import java.util.List;
 import java.util.Vector;
 
 public class OwingPrinter {
-    void printOwing(String name, List<Order> orders) {
-        Iterator<Order> elements = orders.iterator();
-        double outstanding = 0.0;
 
-        // print banner
-        System.out.println ("*****************************");
-        System.out.println ("****** Customer totals ******");
-        System.out.println ("*****************************");
-
-        // print owings
-        while (elements.hasNext()) {
-            Order each = (Order) elements.next();
-            outstanding += each.getAmount();
-        }
-
-        // print details
-        System.out.println("name: " + name);
-        System.out.println("amount: " + outstanding);
+  void printOwing(String name, List<Order> orders) {
+    Iterator<Order> elements = orders.iterator();
+    double outstanding = 0.0;
+    printBanner();
+    // print owings
+    while (elements.hasNext()) {
+      Order each = (Order) elements.next();
+      outstanding += each.getAmount();
     }
+    printNameAndAmount(name, outstanding);
+
+  }
+
+  private void printNameAndAmount(String name, double amount) {
+    // print details
+    System.out.println("name: " + name);
+    System.out.println("amount: " + amount);
+  }
+
+  private void printBanner() {
+    System.out.println("*****************************");
+    System.out.println("****** Customer totals ******");
+    System.out.println("*****************************");
+  }
 }
 
 class Order {
-    private final double amount;
 
-    public Order(double amount) {
-        this.amount = amount;
-    }
+  private final double amount;
 
-    public double getAmount() {
-        return amount;
-    }
+  public Order(double amount) {
+    this.amount = amount;
+  }
+
+  public double getAmount() {
+    return amount;
+  }
 }
