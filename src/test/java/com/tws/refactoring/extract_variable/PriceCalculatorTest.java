@@ -28,4 +28,15 @@ public class PriceCalculatorTest {
     //then
     assertEquals(25100.0,result,0.01);
   }
+  @Test
+  public void should_get_25147_when_given_quantity_is_501_AND_itemPrice_is_50(){
+    //given
+    int itemPrice = 50;
+    int quantity = 501;
+    PriceCalculator priceCalculator = new PriceCalculator();
+    //when
+    double result = priceCalculator.getPrice(quantity,itemPrice);
+    //then
+    assertEquals(25147.5,result,0.01);
+  }
 }
