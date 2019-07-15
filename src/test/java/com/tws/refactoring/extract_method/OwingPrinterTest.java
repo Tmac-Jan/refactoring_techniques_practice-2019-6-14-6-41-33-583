@@ -38,7 +38,7 @@ public class OwingPrinterTest {
   }
 
   @Test
-  public void should_get_owing_when_give_name_and_two_order() {
+  public void should_get_owing_when_give_name_and_two_order_and_amount_not_0() {
     OwingPrinter owingPrinter = new OwingPrinter();
     Order firstOrder = new Order(5);
     Order secondOrder = new Order(6);
@@ -46,7 +46,6 @@ public class OwingPrinterTest {
       add(firstOrder);
       add(secondOrder);
     }};
-
     //when
     owingPrinter.printOwing("apple", orderList);
     String expectedResult = "*****************************\r\n" +
@@ -54,9 +53,26 @@ public class OwingPrinterTest {
         "*****************************\r\n" +
         "name: apple\r\n" +
         "amount: 11.0\r\n";
-
     //then
     assertEquals(expectedResult, outContent.toString());
-
+  }
+  @Test
+  public void should_get_owing_when_give_name_and_two_order_and_amount_is_0() {
+    OwingPrinter owingPrinter = new OwingPrinter();
+    Order firstOrder = new Order(0);
+    Order secondOrder = new Order(0);
+    List<Order> orderList = new ArrayList<Order>() {{
+      add(firstOrder);
+      add(secondOrder);
+    }};
+    //when
+    owingPrinter.printOwing("apple", orderList);
+    String expectedResult = "*****************************\r\n" +
+        "****** Customer totals ******\r\n" +
+        "*****************************\r\n" +
+        "name: apple\r\n" +
+        "amount: 0.0\r\n";
+    //then
+    assertEquals(expectedResult, outContent.toString());
   }
 }
